@@ -53,13 +53,11 @@ flash_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_sem
     HAL_StatusTypeDef status; /* error return check */
     *error_report = NO_ERROR; /* initalized to  NO_ERROR if an error is accruing it will change it */
     FLASH_EraseInitTypeDef erase_init;
-    uint32_t page_error;
     switch (test_select) {
 
         case 0: /* flash test */
 
-            /* no irq while writing to the flash */
-            __disable_irq();
+
 
             /* erase flash */
             erase_init.TypeErase = FLASH_TYPEERASE_SECTORS;
@@ -71,26 +69,36 @@ flash_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_sem
             __HAL_FLASH_CLEAR_FLAG(FLASH_FLAG_EOP | FLASH_FLAG_OPERR | FLASH_FLAG_WRPERR | FLASH_FLAG_PGAERR
                                    | FLASH_FLAG_PGPERR);
 
-            status = HAL_FLASHEx_Erase(&erase_init, &page_error);
+            status = HAL_FLASHEx_Erase_IT(&erase_init);
             if (status != HAL_OK) {
                 *error_report = HAL_RETURN_ERROR;
                 HAL_FLASH_Lock();
-                __enable_irq();
 
                 return;
+            }
+            /* waite for rx interrupt to release the semaphore, if to match time has passed report over time error  */
+            if (xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR) == pdFALSE && *error_report == NO_ERROR) {
+
+                *error_report = OVER_TIME;
+
             }
 
             /* write to flash */
             for (uint8_t j = 0; j < sizeof_data / sizeof(uint32_t); j++) {
 
-                status = HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, FLASH_ADDR + j * sizeof(uint32_t),
+                status = HAL_FLASH_Program_IT(FLASH_TYPEPROGRAM_WORD, FLASH_ADDR + j * sizeof(uint32_t),
                                            *(uint32_t*)(data + j * sizeof(uint32_t)));
                 if (status != HAL_OK) {
                     *error_report = HAL_RETURN_ERROR;
                     HAL_FLASH_Lock();
-                    __enable_irq();
 
                     return;
+                }
+                /* waite for rx interrupt to release the semaphore, if to match time has passed report over time error  */
+                if (xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR) == pdFALSE && *error_report == NO_ERROR) {
+
+                    *error_report = OVER_TIME;
+
                 }
             }
 
@@ -105,5 +113,46 @@ flash_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_sem
         default: break;
     }
     HAL_FLASH_Lock();
-    __enable_irq();
+}
+
+
+/**
+  * @brief  FLASH end of operation interrupt callback
+  * @param  ReturnValue The value saved in this parameter depends on the ongoing procedure
+  *                 - Sectors Erase: Sector which has been erased (if 0xFFFFFFFF, it means that
+  *                                  all the selected sectors have been erased)
+  *                 - Program      : Address which was selected for data program
+  *                 - Mass Erase   : No return value expected
+  * @retval None
+  */
+void HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue)
+{
+
+    xSemaphoreGiveFromISR(stm_test_list_array[FLASH_TEST].q, NULL);
+
+
+}
+
+/**
+  * @brief  FLASH operation error interrupt callback
+  * @param  ReturnValue The value saved in this parameter depends on the ongoing procedure
+  *                 - Sectors Erase: Sector which has been erased (if 0xFFFFFFFF, it means that
+  *                                  all the selected sectors have been erased)
+  *                 - Program      : Address which was selected for data program
+  *                 - Mass Erase   : No return value expected
+  * @retval None
+  */
+void HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue)
+{
+
+
+    unit_tasting_package_t* cast;
+
+        cast = stm_test_list_array[FLASH_TEST].taskX_pack.p->payload;
+
+        cast->error_report = ERROR_IT;
+
+        xSemaphoreGiveFromISR(stm_test_list_array[FLASH_TEST].q, NULL);
+
+
 }

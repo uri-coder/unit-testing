@@ -1,0 +1,5 @@
+../UR_code/developer_code/tests src/uart_test.c:51:1:UART_1_2_task	9
+../UR_code/developer_code/tests src/uart_test.c:128:1:UART_4_5_task	16
+../UR_code/developer_code/tests src/uart_test.c:242:1:HAL_UART_RxCpltCallback	5
+../UR_code/developer_code/tests src/uart_test.c:256:1:HAL_UART_ErrorCallback	5
+../UR_code/developer_code/tests src/uart_test.c:278:1:HAL_UART_AbortCpltCallback	5
