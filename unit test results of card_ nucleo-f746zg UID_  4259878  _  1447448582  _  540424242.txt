@@ -1,0 +1,37 @@
+test uart1 TI rx uart2 TI tx data match = 60/0.  average time elapsed  0.000ms. over time error = 60/60. error interrupt = 60/0. HAL return error = 60/0
+
+ test uart2 TI rx uart1 TI tx  data match = 60/0.  average time elapsed  0.000ms. over time error = 60/60. error interrupt = 60/0. HAL return error = 60/0
+
+ test uart4 TI rx uart5 TI tx data match = 60/23.  average time elapsed 184.000ms. over time error = 60/0. error interrupt = 60/37. HAL return error = 60/0
+
+ test uart5 TI rx uart4 TI tx  data match = 60/58.  average time elapsed 134.000ms. over time error = 60/0. error interrupt = 60/2. HAL return error = 60/0
+
+ test uart4 DMA rx uart5 DMA tx data match = 60/60.  average time elapsed 73.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test uart5 DMA rx uart4 DMA tx data match = 60/60.  average time elapsed 70.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test i2c1 TI rx i2c2 TI rx data match = 60/60.  average time elapsed 200.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test i2c2 TI rx i2c1 TI rx data match = 60/60.  average time elapsed 146.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test i2c1 DMA rx i2c2 TI rx data match = 60/60.  average time elapsed 159.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test spi1 TI rx spi2 TI tx data match = 60/60.  average time elapsed 54.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test spi2 TI rx spi1 TI tx data match = 60/0.  average time elapsed  0.000ms. over time error = 60/30. error interrupt = 60/0. HAL return error = 60/30
+
+ test spi1 DMA rx spi2 TI tx data match = 60/60.  average time elapsed 39.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test spi2 DMA rx spi1 DMA tx data match = 60/0.  average time elapsed  0.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/60
+
+ test spi2 IT rx/tx spi1 it rx/tx data match = 60/60.  average time elapsed 38.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test dec1 to adc1  data match = 60/15.  average time elapsed 35.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test dec1 to adc2  data match = 60/10.  average time elapsed 57.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test dec1 to adc3  data match = 60/0.  average time elapsed  0.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ test flash  data match = 60/60.  average time elapsed 70.000ms. over time error = 60/0. error interrupt = 60/0. HAL return error = 60/0
+
+ 

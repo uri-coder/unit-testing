@@ -1,0 +1,5 @@
+../UR_code/developer_code/tests src/spi_test.c:55:1:spi_1_2_task	19
+../UR_code/developer_code/tests src/spi_test.c:209:1:HAL_SPI_RxCpltCallback	3
+../UR_code/developer_code/tests src/spi_test.c:221:1:HAL_SPI_TxRxCpltCallback	4
+../UR_code/developer_code/tests src/spi_test.c:241:7:HAL_SPI_AbortCpltCallback	3
+../UR_code/developer_code/tests src/spi_test.c:258:1:HAL_SPI_ErrorCallback	3

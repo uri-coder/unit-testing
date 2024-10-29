@@ -1,0 +1,9 @@
+<map id="inc/extern_template_variables.h" name="inc/extern_template_variables.h">
+<area shape="rect" id="node1" title=" " alt="" coords="472,5,625,47"/>
+<area shape="rect" id="node2" href="$dac__adc__test_8c.html" title="hardware specific testing code file for testing dac and adc" alt="" coords="5,95,167,136"/>
+<area shape="rect" id="node3" href="$flash__test_8c.html" title="hardware specific testing code file for testing the flash" alt="" coords="191,95,352,136"/>
+<area shape="rect" id="node4" href="$i2c__test_8c.html" title="hardware specific testing code file for testing i2c" alt="" coords="376,95,537,136"/>
+<area shape="rect" id="node5" href="$spi__test_8c.html" title="hardware specific testing code file for testing spi" alt="" coords="561,95,723,136"/>
+<area shape="rect" id="node6" href="$uart__test_8c.html" title=" " alt="" coords="747,95,908,136"/>
+<area shape="rect" id="node7" href="$main__ur_8c.html" title="stm side hardware independent src file" alt="" coords="932,102,1040,129"/>
+</map>

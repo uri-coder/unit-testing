@@ -1,0 +1,11 @@
+<map id="test_func" name="test_func">
+<area shape="rect" id="node1" title="holds all test task resources" alt="" coords="450,315,533,392"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,145,212,252"/>
+<area shape="rect" id="node3" title=" " alt="" coords="237,160,365,237"/>
+<area shape="rect" id="node4" title=" " alt="" coords="458,160,525,237"/>
+<area shape="rect" id="node5" href="$structtask__package.html" title="holds udp pocket send to the port of the task" alt="" coords="588,160,699,237"/>
+<area shape="rect" id="node6" title=" " alt="" coords="514,5,573,83"/>
+<area shape="rect" id="node7" title=" " alt="" coords="602,5,685,83"/>
+<area shape="rect" id="node8" title=" " alt="" coords="713,5,816,83"/>
+<area shape="rect" id="node9" title=" " alt="" coords="723,160,878,237"/>
+</map>

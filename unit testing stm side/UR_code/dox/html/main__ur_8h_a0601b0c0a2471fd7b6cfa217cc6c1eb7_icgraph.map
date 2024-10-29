@@ -1,0 +1,9 @@
+<map id="udp_new" name="udp_new">
+<area shape="rect" id="Node000001" title=" " alt="" coords="405,5,479,32"/>
+<area shape="rect" id="Node000002" href="$server_8c.html#a78047c519037c4c6091c71e1801519c7" title="Get data from input array." alt="" coords="253,5,357,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="389,21,358,21,358,16,389,16"/>
+<area shape="rect" id="Node000003" href="$tasks_8c.html#aaf50c19f045be31938e7cb65c3e77249" title="task executed at program startup. initialising the server." alt="" coords="121,5,205,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="237,21,205,21,205,16,237,16"/>
+<area shape="rect" id="Node000004" href="$main__ur_8c.html#a4a76a937c8777c9a0693daf1815e7780" title="main function start up the software create the tasks and semaphore&#39;s" alt="" coords="5,5,73,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="105,21,73,21,73,16,105,16"/>
+</map>

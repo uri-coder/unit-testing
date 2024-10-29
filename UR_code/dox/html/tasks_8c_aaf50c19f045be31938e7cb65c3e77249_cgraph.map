@@ -1,0 +1,11 @@
+<map id="begin_task" name="begin_task">
+<area shape="rect" id="Node000001" title="task executed at program startup. initialising the server." alt="" coords="5,56,90,83"/>
+<area shape="rect" id="Node000002" href="$server_8c.html#a78047c519037c4c6091c71e1801519c7" title="Get data from input array." alt="" coords="138,56,242,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,67,122,67,122,72,90,72"/>
+<area shape="rect" id="Node000003" href="$main__ur_8h.html#a79854c9c32cb7fddb1a7c38eaa2a993d" title=" " alt="" coords="326,5,400,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="237,53,311,31,312,36,239,58"/>
+<area shape="rect" id="Node000004" href="$main__ur_8h.html#a0601b0c0a2471fd7b6cfa217cc6c1eb7" title=" " alt="" coords="326,56,400,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="242,67,311,67,311,72,242,72"/>
+<area shape="rect" id="Node000005" href="$server_8c.html#a5b44c65aa41e79871a46aeed1bb4751b" title="udp receive callback. directing packages, according to port number to their destination task." alt="" coords="290,107,436,133"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="239,81,301,99,300,104,237,86"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="ur_main" name="ur_main">
+<area shape="rect" id="node1" title="main function start up the software create the tasks and semaphore&#39;s" alt="" coords="5,56,80,83"/>
+<area shape="rect" id="node2" href="$main__ur_8h.html#a1f13b0af00ad1c268b15b8a13f938a08" title="task starting at the beginning of the program excepting form linux pc request of card and test&#39;s info..." alt="" coords="128,5,273,32"/>
+<area shape="rect" id="node4" href="$main__ur_8h.html#aaf50c19f045be31938e7cb65c3e77249" title="task executed at program startup. initialising the server." alt="" coords="154,56,247,83"/>
+<area shape="rect" id="node9" href="$main__ur_8h.html#a3cdc938c025dc0c06acb950233b1b2cd" title="task start this function for each member of &quot;stm_test_list_array&quot;. executing the test function writte..." alt="" coords="143,107,259,133"/>
+<area shape="rect" id="node3" href="$main__ur_8h.html#a6c6eaf6439bf1d7d9f5a0e3415358542" title="send pocket to destination ip and port" alt="" coords="328,5,431,32"/>
+<area shape="rect" id="node5" href="$main__ur_8h.html#ad17ad77c26a466370dbc8e3bf56d0a98" title="creating sockets initialising card uniq id and task&#39;s ruining flags" alt="" coords="321,56,437,83"/>
+<area shape="rect" id="node6" href="$main__ur_8h.html#a79854c9c32cb7fddb1a7c38eaa2a993d" title=" " alt="" coords="526,5,607,32"/>
+<area shape="rect" id="node7" href="$main__ur_8h.html#aa6d6430499acae43d342f0e68ddbb209" title=" " alt="" coords="527,56,607,83"/>
+<area shape="rect" id="node8" href="$server_8c.html#a5b44c65aa41e79871a46aeed1bb4751b" title="udp receive callback. directing packages, according to port number to their destination task." alt="" coords="485,107,648,133"/>
+</map>

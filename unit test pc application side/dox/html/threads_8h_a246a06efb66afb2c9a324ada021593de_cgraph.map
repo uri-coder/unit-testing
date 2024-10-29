@@ -1,0 +1,4 @@
+<map id="testing_thread" name="testing_thread">
+<area shape="rect" id="node1" title="thread one for each testing freertos task, on stm. to test multiple peripherals simultaneously" alt="" coords="5,5,121,32"/>
+<area shape="rect" id="node2" href="$unit__test__lib_8c.html#a00354bd570b358bfdeaab719c2c62d48" title="take 2 buffers and comparing their data base on test evaluation criteria" alt="" coords="169,5,316,32"/>
+</map>

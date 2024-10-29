@@ -1,0 +1,5 @@
+<map id="begin_task" name="begin_task">
+<area shape="rect" id="Node000001" title="task executed at program startup. initialising the server." alt="" coords="121,5,205,32"/>
+<area shape="rect" id="Node000002" href="$main__ur_8c.html#a4a76a937c8777c9a0693daf1815e7780" title="main function start up the software create the tasks and semaphore&#39;s" alt="" coords="5,5,73,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,21,73,21,73,16,105,16"/>
+</map>

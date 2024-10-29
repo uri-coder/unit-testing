@@ -1,0 +1,8 @@
+<map id="test_recurses" name="test_recurses">
+<area shape="rect" id="node1" title="data structure for test.storing test information and results" alt="" coords="57,503,166,580"/>
+<area shape="rect" id="node2" href="$structlinux__app__tast__setting.html" title="holds task name and setting for linux testing app" alt="" coords="5,261,175,339"/>
+<area shape="rect" id="node3" title=" " alt="" coords="113,5,179,83"/>
+<area shape="rect" id="node5" href="$structtest__preferments__results.html" title="data matching preferments" alt="" coords="128,160,313,237"/>
+<area shape="rect" id="node4" href="$structsingle__test__result.html" title="test results." alt="" coords="249,363,387,440"/>
+<area shape="rect" id="node6" title=" " alt="" coords="338,160,413,237"/>
+</map>
