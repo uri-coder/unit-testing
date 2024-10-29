@@ -33,6 +33,7 @@
 
 #ifndef DEVELOPER_CODE_I2C_TEST_H_
 #define DEVELOPER_CODE_I2C_TEST_H_
+#include "main_ur.h"
 
 extern I2C_HandleTypeDef hi2c1;
 extern I2C_HandleTypeDef hi2c2;

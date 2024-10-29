@@ -139,7 +139,6 @@
 "./UR_code/developer_code/tests src/i2c_test.o"
 "./UR_code/developer_code/tests src/spi_test.o"
 "./UR_code/developer_code/tests src/uart_test.o"
-"./UR_code/i2c_test.o"
 "./UR_code/src/main_ur.o"
 "./UR_code/src/server.o"
 "./UR_code/src/ur_task.o"

@@ -34,6 +34,8 @@
 #ifndef DEVELOPER_CODE_FLASH_TEST_H_
 #define DEVELOPER_CODE_FLASH_TEST_H_
 
+#include "main_ur.h"
+
 /**
  * \brief                     address to write and read from flash
  * \hideinitializer

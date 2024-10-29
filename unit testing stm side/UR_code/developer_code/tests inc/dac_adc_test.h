@@ -34,6 +34,8 @@
 #ifndef DEVELOPER_CODE_DAC_ADC_TEST_H_
 #define DEVELOPER_CODE_DAC_ADC_TEST_H_
 
+#include "main_ur.h"
+
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc2;
 extern ADC_HandleTypeDef hadc3;

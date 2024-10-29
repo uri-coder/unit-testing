@@ -145,7 +145,7 @@ test_func_t stm_test_list_array[] = {
     [I2C_1_2].task_ptr = I2C_1_2_task,
     [SPI_1_2].task_ptr = spi_1_2_task,
     [ADC_DAC].task_ptr = adc_1_2_3_dac1_task,
-    [FLASH].task_ptr = flash_task
+    [FLASH_TEST].task_ptr = flash_task
 
 };
 /**

@@ -3060,14 +3060,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./UR_code/developer_code/tests src/uart_test.o
  .data          0x0000000000000000        0x0 ./UR_code/developer_code/tests src/uart_test.o
  .bss           0x0000000000000000        0x0 ./UR_code/developer_code/tests src/uart_test.o
- .text          0x0000000000000000        0x0 ./UR_code/i2c_test.o
- .data          0x0000000000000000        0x0 ./UR_code/i2c_test.o
- .bss           0x0000000000000000        0x0 ./UR_code/i2c_test.o
- .debug_line    0x0000000000000000        0x0 ./UR_code/i2c_test.o
- .debug_str     0x0000000000000000      0x118 ./UR_code/i2c_test.o
- .comment       0x0000000000000000       0x44 ./UR_code/i2c_test.o
- .ARM.attributes
-                0x0000000000000000       0x34 ./UR_code/i2c_test.o
  .text          0x0000000000000000        0x0 ./UR_code/src/main_ur.o
  .data          0x0000000000000000        0x0 ./UR_code/src/main_ur.o
  .bss           0x0000000000000000        0x0 ./UR_code/src/main_ur.o
@@ -3496,7 +3488,6 @@ LOAD ./UR_code/developer_code/tests src/flash_test.o
 LOAD ./UR_code/developer_code/tests src/i2c_test.o
 LOAD ./UR_code/developer_code/tests src/spi_test.o
 LOAD ./UR_code/developer_code/tests src/uart_test.o
-LOAD ./UR_code/i2c_test.o
 LOAD ./UR_code/src/main_ur.o
 LOAD ./UR_code/src/server.o
 LOAD ./UR_code/src/ur_task.o
@@ -6500,7 +6491,7 @@ LOAD C:/ST/STM32CubeIDE_1.8.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .comment       0x0000000000000043       0x44 ./UR_code/src/server.o
  .comment       0x0000000000000043       0x44 ./UR_code/src/ur_task.o
 
-.debug_info     0x0000000000000000    0x3ee7c
+.debug_info     0x0000000000000000    0x3ef36
  .debug_info    0x0000000000000000      0xa93 ./Core/Src/adc.o
  .debug_info    0x0000000000000a93      0x8a1 ./Core/Src/dac.o
  .debug_info    0x0000000000001334      0x546 ./Core/Src/dma.o
@@ -6565,17 +6556,17 @@ LOAD C:/ST/STM32CubeIDE_1.8.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_info    0x00000000000377aa      0xddc ./Middlewares/Third_Party/LwIP/src/core/ipv4/ip4_frag.o
  .debug_info    0x0000000000038586      0x742 ./Middlewares/Third_Party/LwIP/src/netif/ethernet.o
  .debug_info    0x0000000000038cc8     0x1545 ./Middlewares/Third_Party/LwIP/system/OS/sys_arch.o
- .debug_info    0x000000000003a20d      0x5b7 ./UR_code/developer_code/test_funck.o
- .debug_info    0x000000000003a7c4      0x869 ./UR_code/developer_code/tests src/dac_adc_test.o
- .debug_info    0x000000000003b02d      0x372 ./UR_code/developer_code/tests src/flash_test.o
- .debug_info    0x000000000003b39f      0xb81 ./UR_code/developer_code/tests src/i2c_test.o
- .debug_info    0x000000000003bf20      0xc28 ./UR_code/developer_code/tests src/spi_test.o
- .debug_info    0x000000000003cb48      0xc7d ./UR_code/developer_code/tests src/uart_test.o
- .debug_info    0x000000000003d7c5      0x62a ./UR_code/src/main_ur.o
- .debug_info    0x000000000003ddef      0x887 ./UR_code/src/server.o
- .debug_info    0x000000000003e676      0x806 ./UR_code/src/ur_task.o
+ .debug_info    0x000000000003a20d      0x5ee ./UR_code/developer_code/test_funck.o
+ .debug_info    0x000000000003a7fb      0x869 ./UR_code/developer_code/tests src/dac_adc_test.o
+ .debug_info    0x000000000003b064      0x372 ./UR_code/developer_code/tests src/flash_test.o
+ .debug_info    0x000000000003b3d6      0xbaf ./UR_code/developer_code/tests src/i2c_test.o
+ .debug_info    0x000000000003bf85      0xc4e ./UR_code/developer_code/tests src/spi_test.o
+ .debug_info    0x000000000003cbd3      0xcac ./UR_code/developer_code/tests src/uart_test.o
+ .debug_info    0x000000000003d87f      0x62a ./UR_code/src/main_ur.o
+ .debug_info    0x000000000003dea9      0x887 ./UR_code/src/server.o
+ .debug_info    0x000000000003e730      0x806 ./UR_code/src/ur_task.o
 
-.debug_abbrev   0x0000000000000000     0xa48c
+.debug_abbrev   0x0000000000000000     0xa471
  .debug_abbrev  0x0000000000000000      0x1f5 ./Core/Src/adc.o
  .debug_abbrev  0x00000000000001f5      0x1f8 ./Core/Src/dac.o
  .debug_abbrev  0x00000000000003ed      0x119 ./Core/Src/dma.o
@@ -6640,15 +6631,15 @@ LOAD C:/ST/STM32CubeIDE_1.8.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_abbrev  0x0000000000008a94      0x302 ./Middlewares/Third_Party/LwIP/src/core/ipv4/ip4_frag.o
  .debug_abbrev  0x0000000000008d96      0x26f ./Middlewares/Third_Party/LwIP/src/netif/ethernet.o
  .debug_abbrev  0x0000000000009005      0x382 ./Middlewares/Third_Party/LwIP/system/OS/sys_arch.o
- .debug_abbrev  0x0000000000009387      0x14a ./UR_code/developer_code/test_funck.o
- .debug_abbrev  0x00000000000094d1      0x194 ./UR_code/developer_code/tests src/dac_adc_test.o
- .debug_abbrev  0x0000000000009665      0x1a3 ./UR_code/developer_code/tests src/flash_test.o
- .debug_abbrev  0x0000000000009808      0x1e0 ./UR_code/developer_code/tests src/i2c_test.o
- .debug_abbrev  0x00000000000099e8      0x223 ./UR_code/developer_code/tests src/spi_test.o
- .debug_abbrev  0x0000000000009c0b      0x216 ./UR_code/developer_code/tests src/uart_test.o
- .debug_abbrev  0x0000000000009e21      0x205 ./UR_code/src/main_ur.o
- .debug_abbrev  0x000000000000a026      0x245 ./UR_code/src/server.o
- .debug_abbrev  0x000000000000a26b      0x221 ./UR_code/src/ur_task.o
+ .debug_abbrev  0x0000000000009387      0x15f ./UR_code/developer_code/test_funck.o
+ .debug_abbrev  0x00000000000094e6      0x194 ./UR_code/developer_code/tests src/dac_adc_test.o
+ .debug_abbrev  0x000000000000967a      0x1a3 ./UR_code/developer_code/tests src/flash_test.o
+ .debug_abbrev  0x000000000000981d      0x1e4 ./UR_code/developer_code/tests src/i2c_test.o
+ .debug_abbrev  0x0000000000009a01      0x1eb ./UR_code/developer_code/tests src/spi_test.o
+ .debug_abbrev  0x0000000000009bec      0x21a ./UR_code/developer_code/tests src/uart_test.o
+ .debug_abbrev  0x0000000000009e06      0x205 ./UR_code/src/main_ur.o
+ .debug_abbrev  0x000000000000a00b      0x245 ./UR_code/src/server.o
+ .debug_abbrev  0x000000000000a250      0x221 ./UR_code/src/ur_task.o
 
 .debug_aranges  0x0000000000000000     0x2e68
  .debug_aranges
@@ -6943,7 +6934,7 @@ LOAD C:/ST/STM32CubeIDE_1.8.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_rnglists
                 0x0000000000002421       0x21 ./UR_code/src/ur_task.o
 
-.debug_line     0x0000000000000000    0x2f8ab
+.debug_line     0x0000000000000000    0x2f9cf
  .debug_line    0x0000000000000000      0x4a3 ./Core/Src/adc.o
  .debug_line    0x00000000000004a3      0x36a ./Core/Src/dac.o
  .debug_line    0x000000000000080d      0x2c7 ./Core/Src/dma.o
@@ -7008,17 +6999,17 @@ LOAD C:/ST/STM32CubeIDE_1.8.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_line    0x000000000002ad71      0xb70 ./Middlewares/Third_Party/LwIP/src/core/ipv4/ip4_frag.o
  .debug_line    0x000000000002b8e1      0x61c ./Middlewares/Third_Party/LwIP/src/netif/ethernet.o
  .debug_line    0x000000000002befd      0x7d9 ./Middlewares/Third_Party/LwIP/system/OS/sys_arch.o
- .debug_line    0x000000000002c6d6      0x3dc ./UR_code/developer_code/test_funck.o
- .debug_line    0x000000000002cab2      0x481 ./UR_code/developer_code/tests src/dac_adc_test.o
- .debug_line    0x000000000002cf33      0x49a ./UR_code/developer_code/tests src/flash_test.o
- .debug_line    0x000000000002d3cd      0x5cb ./UR_code/developer_code/tests src/i2c_test.o
- .debug_line    0x000000000002d998      0x658 ./UR_code/developer_code/tests src/spi_test.o
- .debug_line    0x000000000002dff0      0x6a0 ./UR_code/developer_code/tests src/uart_test.o
- .debug_line    0x000000000002e690      0x51c ./UR_code/src/main_ur.o
- .debug_line    0x000000000002ebac      0x694 ./UR_code/src/server.o
- .debug_line    0x000000000002f240      0x66b ./UR_code/src/ur_task.o
+ .debug_line    0x000000000002c6d6      0x3ec ./UR_code/developer_code/test_funck.o
+ .debug_line    0x000000000002cac2      0x481 ./UR_code/developer_code/tests src/dac_adc_test.o
+ .debug_line    0x000000000002cf43      0x49a ./UR_code/developer_code/tests src/flash_test.o
+ .debug_line    0x000000000002d3dd      0x629 ./UR_code/developer_code/tests src/i2c_test.o
+ .debug_line    0x000000000002da06      0x6b3 ./UR_code/developer_code/tests src/spi_test.o
+ .debug_line    0x000000000002e0b9      0x6fb ./UR_code/developer_code/tests src/uart_test.o
+ .debug_line    0x000000000002e7b4      0x51c ./UR_code/src/main_ur.o
+ .debug_line    0x000000000002ecd0      0x694 ./UR_code/src/server.o
+ .debug_line    0x000000000002f364      0x66b ./UR_code/src/ur_task.o
 
-.debug_str      0x0000000000000000     0xded5
+.debug_str      0x0000000000000000     0xdf1a
  .debug_str     0x0000000000000000      0x79f ./Core/Src/adc.o
                                         0x84a (size before relaxing)
  .debug_str     0x000000000000079f      0x1ad ./Core/Src/dac.o
@@ -7147,24 +7138,24 @@ LOAD C:/ST/STM32CubeIDE_1.8.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
                                         0x69e (size before relaxing)
  .debug_str     0x000000000000d869      0x143 ./Middlewares/Third_Party/LwIP/system/OS/sys_arch.o
                                         0xeef (size before relaxing)
- .debug_str     0x000000000000d9ac      0x1cf ./UR_code/developer_code/test_funck.o
-                                        0x590 (size before relaxing)
- .debug_str     0x000000000000db7b       0x7d ./UR_code/developer_code/tests src/dac_adc_test.o
+ .debug_str     0x000000000000d9ac      0x213 ./UR_code/developer_code/test_funck.o
+                                        0x5d4 (size before relaxing)
+ .debug_str     0x000000000000dbbf       0x7d ./UR_code/developer_code/tests src/dac_adc_test.o
                                         0x81a (size before relaxing)
- .debug_str     0x000000000000dbf8       0x54 ./UR_code/developer_code/tests src/flash_test.o
+ .debug_str     0x000000000000dc3c       0x54 ./UR_code/developer_code/tests src/flash_test.o
                                         0x3d1 (size before relaxing)
- .debug_str     0x000000000000dc4c       0x5b ./UR_code/developer_code/tests src/i2c_test.o
-                                        0xa50 (size before relaxing)
- .debug_str     0x000000000000dca7       0x39 ./UR_code/developer_code/tests src/spi_test.o
-                                        0xabf (size before relaxing)
- .debug_str     0x000000000000dce0       0x30 ./UR_code/developer_code/tests src/uart_test.o
-                                        0xa0f (size before relaxing)
- .debug_str     0x000000000000dd10      0x12a ./UR_code/src/main_ur.o
-                                        0x5f6 (size before relaxing)
- .debug_str     0x000000000000de3a       0x5f ./UR_code/src/server.o
+ .debug_str     0x000000000000dc90       0x5b ./UR_code/developer_code/tests src/i2c_test.o
+                                        0xa94 (size before relaxing)
+ .debug_str     0x000000000000dceb       0x39 ./UR_code/developer_code/tests src/spi_test.o
+                                        0xb03 (size before relaxing)
+ .debug_str     0x000000000000dd24       0x30 ./UR_code/developer_code/tests src/uart_test.o
+                                        0xa53 (size before relaxing)
+ .debug_str     0x000000000000dd54      0x12b ./UR_code/src/main_ur.o
+                                        0x5f7 (size before relaxing)
+ .debug_str     0x000000000000de7f       0x5f ./UR_code/src/server.o
                                         0x6e0 (size before relaxing)
- .debug_str     0x000000000000de99       0x3c ./UR_code/src/ur_task.o
-                                        0x7e2 (size before relaxing)
+ .debug_str     0x000000000000dede       0x3c ./UR_code/src/ur_task.o
+                                        0x7e3 (size before relaxing)
 
 .debug_frame    0x0000000000000000     0xc410
  .debug_frame   0x0000000000000000       0xc4 ./Core/Src/adc.o

@@ -42,6 +42,5 @@ Middlewares/Third_Party/LwIP/src/netif/ppp \
 Middlewares/Third_Party/LwIP/system/OS \
 UR_code/developer_code \
 UR_code/developer_code/tests\ src \
-UR_code \
 UR_code/src \
 

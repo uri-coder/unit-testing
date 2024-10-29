@@ -1,3 +1,0 @@
-../UR_code/src/server.c:46:1:udp_receive_callback	32	static
-../UR_code/src/server.c:111:1:send_packet	32	static
-../UR_code/src/server.c:138:1:udpServer_init	24	static

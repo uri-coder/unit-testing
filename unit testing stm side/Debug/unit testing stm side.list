@@ -33,21 +33,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  14 .comment      00000043  00000000  00000000  00040314  2**0
                   CONTENTS, READONLY
- 15 .debug_info   0003ee7c  00000000  00000000  00040357  2**0
+ 15 .debug_info   0003ef36  00000000  00000000  00040357  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_abbrev 0000a48c  00000000  00000000  0007f1d3  2**0
+ 16 .debug_abbrev 0000a471  00000000  00000000  0007f28d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_aranges 00002e68  00000000  00000000  00089660  2**3
+ 17 .debug_aranges 00002e68  00000000  00000000  00089700  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_rnglists 00002442  00000000  00000000  0008c4c8  2**0
+ 18 .debug_rnglists 00002442  00000000  00000000  0008c568  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_line   0002f8ab  00000000  00000000  0008e90a  2**0
+ 19 .debug_line   0002f9cf  00000000  00000000  0008e9aa  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_str    0000ded5  00000000  00000000  000be1b5  2**0
+ 20 .debug_str    0000df1a  00000000  00000000  000be379  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_frame  0000c410  00000000  00000000  000cc08c  2**2
+ 21 .debug_frame  0000c410  00000000  00000000  000cc294  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000066  00000000  00000000  000d849c  2**0
+ 22 .debug_line_str 00000066  00000000  00000000  000d86a4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -77974,7 +77974,7 @@ flash_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_sem
  801c2a8:	f887 3026 	strb.w	r3, [r7, #38]	; 0x26
  801c2ac:	e011      	b.n	801c2d2 <flash_task+0xfe>
 
-                *((uint32_t *)(data + j * sizeof(uint32_t))) = *((uint32_t*)(FLASH_ADDR + j * sizeof(uint32_t)));
+                *((uint32_t*)(data + j * sizeof(uint32_t))) = *((uint32_t*)(FLASH_ADDR + j * sizeof(uint32_t)));
  801c2ae:	f897 2026 	ldrb.w	r2, [r7, #38]	; 0x26
  801c2b2:	4b11      	ldr	r3, [pc, #68]	; (801c2f8 <flash_task+0x124>)
  801c2b4:	4413      	add	r3, r2
@@ -78054,8 +78054,8 @@ I2C_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c322:	d002      	beq.n	801c32a <I2C_1_2_task+0x2e>
  801c324:	2b01      	cmp	r3, #1
  801c326:	d022      	beq.n	801c36e <I2C_1_2_task+0x72>
+                *error_report = HAL_RETURN_ERROR;
             }
-
 
             break;
 
@@ -78206,62 +78206,61 @@ I2C_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c418:	2b00      	cmp	r3, #0
  801c41a:	d117      	bne.n	801c44c <I2C_1_2_task+0x150>
 
-    	/* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-    	HAL_I2C_Master_Abort_IT(&hi2c1, 0);
+        /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
+        HAL_I2C_Master_Abort_IT(&hi2c1, 0);
  801c41c:	2100      	movs	r1, #0
  801c41e:	4819      	ldr	r0, [pc, #100]	; (801c484 <I2C_1_2_task+0x188>)
  801c420:	f7ea fa8a 	bl	8006938 <HAL_I2C_Master_Abort_IT>
-    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c424:	687b      	ldr	r3, [r7, #4]
  801c426:	681b      	ldr	r3, [r3, #0]
  801c428:	2164      	movs	r1, #100	; 0x64
  801c42a:	4618      	mov	r0, r3
  801c42c:	f7f3 fac2 	bl	800f9b4 <xQueueSemaphoreTake>
-    	HAL_I2C_Master_Abort_IT(&hi2c2, 0);
+        HAL_I2C_Master_Abort_IT(&hi2c2, 0);
  801c430:	2100      	movs	r1, #0
  801c432:	4815      	ldr	r0, [pc, #84]	; (801c488 <I2C_1_2_task+0x18c>)
  801c434:	f7ea fa80 	bl	8006938 <HAL_I2C_Master_Abort_IT>
-    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c438:	687b      	ldr	r3, [r7, #4]
  801c43a:	681b      	ldr	r3, [r3, #0]
  801c43c:	2164      	movs	r1, #100	; 0x64
  801c43e:	4618      	mov	r0, r3
  801c440:	f7f3 fab8 	bl	800f9b4 <xQueueSemaphoreTake>
 
-            *error_report = OVER_TIME;
+        *error_report = OVER_TIME;
  801c444:	6a3b      	ldr	r3, [r7, #32]
  801c446:	2203      	movs	r2, #3
  801c448:	701a      	strb	r2, [r3, #0]
  801c44a:	e017      	b.n	801c47c <I2C_1_2_task+0x180>
 
-    }else if (*error_report == ERROR_IT){
+    } else if (*error_report == ERROR_IT) {
  801c44c:	6a3b      	ldr	r3, [r7, #32]
  801c44e:	781b      	ldrb	r3, [r3, #0]
  801c450:	2b02      	cmp	r3, #2
  801c452:	d113      	bne.n	801c47c <I2C_1_2_task+0x180>
 
-    	/* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-    	HAL_I2C_Master_Abort_IT(&hi2c1, 0);
+        /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
+        HAL_I2C_Master_Abort_IT(&hi2c1, 0);
  801c454:	2100      	movs	r1, #0
  801c456:	480b      	ldr	r0, [pc, #44]	; (801c484 <I2C_1_2_task+0x188>)
  801c458:	f7ea fa6e 	bl	8006938 <HAL_I2C_Master_Abort_IT>
-    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c45c:	687b      	ldr	r3, [r7, #4]
  801c45e:	681b      	ldr	r3, [r3, #0]
  801c460:	2164      	movs	r1, #100	; 0x64
  801c462:	4618      	mov	r0, r3
  801c464:	f7f3 faa6 	bl	800f9b4 <xQueueSemaphoreTake>
-    	HAL_I2C_Master_Abort_IT(&hi2c2, 0);
+        HAL_I2C_Master_Abort_IT(&hi2c2, 0);
  801c468:	2100      	movs	r1, #0
  801c46a:	4807      	ldr	r0, [pc, #28]	; (801c488 <I2C_1_2_task+0x18c>)
  801c46c:	f7ea fa64 	bl	8006938 <HAL_I2C_Master_Abort_IT>
-    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c470:	687b      	ldr	r3, [r7, #4]
  801c472:	681b      	ldr	r3, [r3, #0]
  801c474:	2164      	movs	r1, #100	; 0x64
  801c476:	4618      	mov	r0, r3
  801c478:	f7f3 fa9c 	bl	800f9b4 <xQueueSemaphoreTake>
-
     }
 }
  801c47c:	3718      	adds	r7, #24
@@ -78273,15 +78272,12 @@ I2C_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
 
 0801c48c <HAL_I2C_MasterRxCpltCallback>:
 
-
-
 void
 HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef* hi2c) {
  801c48c:	b580      	push	{r7, lr}
  801c48e:	b082      	sub	sp, #8
  801c490:	af00      	add	r7, sp, #0
  801c492:	6078      	str	r0, [r7, #4]
-
 
     if (hi2c == &hi2c1 || hi2c == &hi2c2) {
  801c494:	687b      	ldr	r3, [r7, #4]
@@ -78293,8 +78289,7 @@ HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef* hi2c) {
  801c4a0:	4293      	cmp	r3, r2
  801c4a2:	d105      	bne.n	801c4b0 <HAL_I2C_MasterRxCpltCallback+0x24>
 
-
-        xSemaphoreGiveFromISR(stm_test_list_array[2].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[I2C_1_2].q, NULL);
  801c4a4:	4b06      	ldr	r3, [pc, #24]	; (801c4c0 <HAL_I2C_MasterRxCpltCallback+0x34>)
  801c4a6:	6bdb      	ldr	r3, [r3, #60]	; 0x3c
  801c4a8:	2100      	movs	r1, #0
@@ -78322,7 +78317,7 @@ HAL_I2C_ErrorCallback(I2C_HandleTypeDef* hi2c) {
  801c4c8:	af00      	add	r7, sp, #0
  801c4ca:	6078      	str	r0, [r7, #4]
 
-	unit_tasting_package_t* cast;
+    unit_tasting_package_t* cast;
 
     if (hi2c == &hi2c1 || hi2c == &hi2c2) {
  801c4cc:	687b      	ldr	r3, [r7, #4]
@@ -78334,7 +78329,7 @@ HAL_I2C_ErrorCallback(I2C_HandleTypeDef* hi2c) {
  801c4d8:	4293      	cmp	r3, r2
  801c4da:	d10d      	bne.n	801c4f8 <HAL_I2C_ErrorCallback+0x34>
 
-        cast = stm_test_list_array[2].taskX_pack.p->payload;
+        cast = stm_test_list_array[I2C_1_2].taskX_pack.p->payload;
  801c4dc:	4b0a      	ldr	r3, [pc, #40]	; (801c508 <HAL_I2C_ErrorCallback+0x44>)
  801c4de:	6c9b      	ldr	r3, [r3, #72]	; 0x48
  801c4e0:	685b      	ldr	r3, [r3, #4]
@@ -78345,7 +78340,7 @@ HAL_I2C_ErrorCallback(I2C_HandleTypeDef* hi2c) {
  801c4e6:	2202      	movs	r2, #2
  801c4e8:	f883 2071 	strb.w	r2, [r3, #113]	; 0x71
 
-        xSemaphoreGiveFromISR(stm_test_list_array[2].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[I2C_1_2].q, NULL);
  801c4ec:	4b06      	ldr	r3, [pc, #24]	; (801c508 <HAL_I2C_ErrorCallback+0x44>)
  801c4ee:	6bdb      	ldr	r3, [r3, #60]	; 0x3c
  801c4f0:	2100      	movs	r1, #0
@@ -78363,13 +78358,13 @@ HAL_I2C_ErrorCallback(I2C_HandleTypeDef* hi2c) {
 
 0801c50c <HAL_I2C_AbortCpltCallback>:
 
- void HAL_I2C_AbortCpltCallback(I2C_HandleTypeDef *hi2c)
-{
+void
+HAL_I2C_AbortCpltCallback(I2C_HandleTypeDef* hi2c) {
  801c50c:	b580      	push	{r7, lr}
  801c50e:	b082      	sub	sp, #8
  801c510:	af00      	add	r7, sp, #0
  801c512:	6078      	str	r0, [r7, #4]
-	    if (hi2c == &hi2c1 || hi2c == &hi2c2) {
+    if (hi2c == &hi2c1 || hi2c == &hi2c2) {
  801c514:	687b      	ldr	r3, [r7, #4]
  801c516:	4a08      	ldr	r2, [pc, #32]	; (801c538 <HAL_I2C_AbortCpltCallback+0x2c>)
  801c518:	4293      	cmp	r3, r2
@@ -78379,15 +78374,13 @@ HAL_I2C_ErrorCallback(I2C_HandleTypeDef* hi2c) {
  801c520:	4293      	cmp	r3, r2
  801c522:	d105      	bne.n	801c530 <HAL_I2C_AbortCpltCallback+0x24>
 
-
-
-	        xSemaphoreGiveFromISR(stm_test_list_array[2].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[I2C_1_2].q, NULL);
  801c524:	4b06      	ldr	r3, [pc, #24]	; (801c540 <HAL_I2C_AbortCpltCallback+0x34>)
  801c526:	6bdb      	ldr	r3, [r3, #60]	; 0x3c
  801c528:	2100      	movs	r1, #0
  801c52a:	4618      	mov	r0, r3
  801c52c:	f7f3 f8c6 	bl	800f6bc <xQueueGiveFromISR>
-	    }
+    }
 }
  801c530:	bf00      	nop
  801c532:	3708      	adds	r7, #8
@@ -78434,7 +78427,7 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c578:	0801c663 	.word	0x0801c663
  801c57c:	0801c6bd 	.word	0x0801c6bd
 
-        case 0:                  /* spi1 TI rx spi2 TI tx */
+        case 0: /* spi1 TI rx spi2 TI tx */
 
             /* peripheral receive testing data  */
             status = HAL_SPI_Receive_IT(&hspi1, data, sizeof_data);
@@ -78471,8 +78464,8 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c5ae:	7dfb      	ldrb	r3, [r7, #23]
  801c5b0:	2b00      	cmp	r3, #0
  801c5b2:	f000 80b7 	beq.w	801c724 <spi_1_2_task+0x1e0>
-               /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-               HAL_SPI_Abort_IT(&hspi1);
+                /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
+                HAL_SPI_Abort_IT(&hspi1);
  801c5b6:	487e      	ldr	r0, [pc, #504]	; (801c7b0 <spi_1_2_task+0x26c>)
  801c5b8:	f7ed febc 	bl	800a334 <HAL_SPI_Abort_IT>
                 *error_report = HAL_RETURN_ERROR;
@@ -78484,8 +78477,7 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
             break;
  801c5c2:	e0af      	b.n	801c724 <spi_1_2_task+0x1e0>
 
-        case 1:                     /* spi2 TI rx spi1 TI tx */
-
+        case 1: /* spi2 TI rx spi1 TI tx */
 
             /* peripheral receive testing data  */
             status = HAL_SPI_Receive_IT(&hspi2, data, sizeof_data);
@@ -78524,18 +78516,18 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c5f8:	7dfb      	ldrb	r3, [r7, #23]
  801c5fa:	2b00      	cmp	r3, #0
  801c5fc:	f000 8094 	beq.w	801c728 <spi_1_2_task+0x1e4>
-               /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-    	        HAL_SPI_Abort_IT(&hspi1);
+                /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
+                HAL_SPI_Abort_IT(&hspi1);
  801c600:	486b      	ldr	r0, [pc, #428]	; (801c7b0 <spi_1_2_task+0x26c>)
  801c602:	f7ed fe97 	bl	800a334 <HAL_SPI_Abort_IT>
-    	    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+                xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c606:	687b      	ldr	r3, [r7, #4]
  801c608:	681b      	ldr	r3, [r3, #0]
  801c60a:	2164      	movs	r1, #100	; 0x64
  801c60c:	4618      	mov	r0, r3
  801c60e:	f7f3 f9d1 	bl	800f9b4 <xQueueSemaphoreTake>
 
-            	HAL_SPI_Abort_IT(&hspi2);
+                HAL_SPI_Abort_IT(&hspi2);
  801c612:	4868      	ldr	r0, [pc, #416]	; (801c7b4 <spi_1_2_task+0x270>)
  801c614:	f7ed fe8e 	bl	800a334 <HAL_SPI_Abort_IT>
                 *error_report = HAL_RETURN_ERROR;
@@ -78544,12 +78536,10 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c61c:	701a      	strb	r2, [r3, #0]
             }
 
-
             break;
  801c61e:	e083      	b.n	801c728 <spi_1_2_task+0x1e4>
 
-        case 2:                                  	/* spi1 DMA rx spi2 TI tx */
-
+        case 2: /* spi1 DMA rx spi2 TI tx */
 
             /* peripheral receive testing data  */
             status = HAL_SPI_Receive_DMA(&hspi1, data, sizeof_data);
@@ -78586,7 +78576,7 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c650:	2b00      	cmp	r3, #0
  801c652:	d06b      	beq.n	801c72c <spi_1_2_task+0x1e8>
                 /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-               HAL_SPI_Abort_IT(&hspi1);
+                HAL_SPI_Abort_IT(&hspi1);
  801c654:	4856      	ldr	r0, [pc, #344]	; (801c7b0 <spi_1_2_task+0x26c>)
  801c656:	f7ed fe6d 	bl	800a334 <HAL_SPI_Abort_IT>
                 *error_report = HAL_RETURN_ERROR;
@@ -78595,13 +78585,12 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c65e:	701a      	strb	r2, [r3, #0]
             }
 
-
             break;
  801c660:	e064      	b.n	801c72c <spi_1_2_task+0x1e8>
 
-        case 3:                                      /* spi2 DMA rx spi1 DMA tx */
+        case 3: /* spi2 DMA rx spi1 DMA tx */
 
-        	status = HAL_SPI_Receive_DMA(&hspi2, data, sizeof_data);
+            status = HAL_SPI_Receive_DMA(&hspi2, data, sizeof_data);
  801c662:	897b      	ldrh	r3, [r7, #10]
  801c664:	461a      	mov	r2, r3
  801c666:	68f9      	ldr	r1, [r7, #12]
@@ -78638,17 +78627,17 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c698:	2b00      	cmp	r3, #0
  801c69a:	d049      	beq.n	801c730 <spi_1_2_task+0x1ec>
                 /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-    	        HAL_SPI_Abort_IT(&hspi1);
+                HAL_SPI_Abort_IT(&hspi1);
  801c69c:	4844      	ldr	r0, [pc, #272]	; (801c7b0 <spi_1_2_task+0x26c>)
  801c69e:	f7ed fe49 	bl	800a334 <HAL_SPI_Abort_IT>
-    	    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+                xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c6a2:	687b      	ldr	r3, [r7, #4]
  801c6a4:	681b      	ldr	r3, [r3, #0]
  801c6a6:	2164      	movs	r1, #100	; 0x64
  801c6a8:	4618      	mov	r0, r3
  801c6aa:	f7f3 f983 	bl	800f9b4 <xQueueSemaphoreTake>
 
-            	HAL_SPI_Abort_IT(&hspi2);
+                HAL_SPI_Abort_IT(&hspi2);
  801c6ae:	4841      	ldr	r0, [pc, #260]	; (801c7b4 <spi_1_2_task+0x270>)
  801c6b0:	f7ed fe40 	bl	800a334 <HAL_SPI_Abort_IT>
                 *error_report = HAL_RETURN_ERROR;
@@ -78657,11 +78646,10 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c6b8:	701a      	strb	r2, [r3, #0]
             }
 
-
             break;
  801c6ba:	e039      	b.n	801c730 <spi_1_2_task+0x1ec>
 
-        case 4:                             /* spi2 IT rx/tx spi1 it rx/tx */
+        case 4: /* spi2 IT rx/tx spi1 it rx/tx */
 
             spi_tx_rx = NO_PERIPHERAL_FINISH;
  801c6bc:	4b3e      	ldr	r3, [pc, #248]	; (801c7b8 <spi_1_2_task+0x274>)
@@ -78689,7 +78677,7 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c6e2:	2b00      	cmp	r3, #0
  801c6e4:	d003      	beq.n	801c6ee <spi_1_2_task+0x1aa>
 
-            	*error_report = HAL_RETURN_ERROR;
+                *error_report = HAL_RETURN_ERROR;
  801c6e6:	6a3b      	ldr	r3, [r7, #32]
  801c6e8:	2201      	movs	r2, #1
  801c6ea:	701a      	strb	r2, [r3, #0]
@@ -78717,7 +78705,7 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c70e:	2b00      	cmp	r3, #0
  801c710:	d010      	beq.n	801c734 <spi_1_2_task+0x1f0>
                 /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-               HAL_SPI_Abort_IT(&hspi1);
+                HAL_SPI_Abort_IT(&hspi1);
  801c712:	4827      	ldr	r0, [pc, #156]	; (801c7b0 <spi_1_2_task+0x26c>)
  801c714:	f7ed fe0e 	bl	800a334 <HAL_SPI_Abort_IT>
                 *error_report = HAL_RETURN_ERROR;
@@ -78762,64 +78750,60 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
  801c74c:	2b00      	cmp	r3, #0
  801c74e:	d115      	bne.n	801c77c <spi_1_2_task+0x238>
 
-    	/* abort transmission in case HAL returns error so callback isr function wont release semaphore */
+        /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
         HAL_SPI_Abort_IT(&hspi2);
  801c750:	4818      	ldr	r0, [pc, #96]	; (801c7b4 <spi_1_2_task+0x270>)
  801c752:	f7ed fdef 	bl	800a334 <HAL_SPI_Abort_IT>
-    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c756:	687b      	ldr	r3, [r7, #4]
  801c758:	681b      	ldr	r3, [r3, #0]
  801c75a:	2164      	movs	r1, #100	; 0x64
  801c75c:	4618      	mov	r0, r3
  801c75e:	f7f3 f929 	bl	800f9b4 <xQueueSemaphoreTake>
 
-    	HAL_SPI_Abort_IT(&hspi1);
+        HAL_SPI_Abort_IT(&hspi1);
  801c762:	4813      	ldr	r0, [pc, #76]	; (801c7b0 <spi_1_2_task+0x26c>)
  801c764:	f7ed fde6 	bl	800a334 <HAL_SPI_Abort_IT>
-    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c768:	687b      	ldr	r3, [r7, #4]
  801c76a:	681b      	ldr	r3, [r3, #0]
  801c76c:	2164      	movs	r1, #100	; 0x64
  801c76e:	4618      	mov	r0, r3
  801c770:	f7f3 f920 	bl	800f9b4 <xQueueSemaphoreTake>
 
-
-            *error_report = OVER_TIME;
+        *error_report = OVER_TIME;
  801c774:	6a3b      	ldr	r3, [r7, #32]
  801c776:	2203      	movs	r2, #3
  801c778:	701a      	strb	r2, [r3, #0]
  801c77a:	e015      	b.n	801c7a8 <spi_1_2_task+0x264>
 
-    }else if (*error_report == ERROR_IT){
+    } else if (*error_report == ERROR_IT) {
  801c77c:	6a3b      	ldr	r3, [r7, #32]
  801c77e:	781b      	ldrb	r3, [r3, #0]
  801c780:	2b02      	cmp	r3, #2
  801c782:	d111      	bne.n	801c7a8 <spi_1_2_task+0x264>
 
-    	/* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-    	        HAL_SPI_Abort_IT(&hspi2);
+        /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
+        HAL_SPI_Abort_IT(&hspi2);
  801c784:	480b      	ldr	r0, [pc, #44]	; (801c7b4 <spi_1_2_task+0x270>)
  801c786:	f7ed fdd5 	bl	800a334 <HAL_SPI_Abort_IT>
-    	    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c78a:	687b      	ldr	r3, [r7, #4]
  801c78c:	681b      	ldr	r3, [r3, #0]
  801c78e:	2164      	movs	r1, #100	; 0x64
  801c790:	4618      	mov	r0, r3
  801c792:	f7f3 f90f 	bl	800f9b4 <xQueueSemaphoreTake>
 
-    	    	HAL_SPI_Abort_IT(&hspi1);
+        HAL_SPI_Abort_IT(&hspi1);
  801c796:	4806      	ldr	r0, [pc, #24]	; (801c7b0 <spi_1_2_task+0x26c>)
  801c798:	f7ed fdcc 	bl	800a334 <HAL_SPI_Abort_IT>
-    	    	xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801c79c:	687b      	ldr	r3, [r7, #4]
  801c79e:	681b      	ldr	r3, [r3, #0]
  801c7a0:	2164      	movs	r1, #100	; 0x64
  801c7a2:	4618      	mov	r0, r3
  801c7a4:	f7f3 f906 	bl	800f9b4 <xQueueSemaphoreTake>
-
-
     }
-
 }
  801c7a8:	3718      	adds	r7, #24
  801c7aa:	46bd      	mov	sp, r7
@@ -78831,7 +78815,6 @@ spi_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_s
 
 0801c7bc <HAL_SPI_RxCpltCallback>:
 
-
 /* peripheral isr callback function`s begin */
 
 void
@@ -78840,7 +78823,6 @@ HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* hspi) {
  801c7be:	b082      	sub	sp, #8
  801c7c0:	af00      	add	r7, sp, #0
  801c7c2:	6078      	str	r0, [r7, #4]
-
 
     if (hspi == &hspi1 || hspi == &hspi2) {
  801c7c4:	687b      	ldr	r3, [r7, #4]
@@ -78852,8 +78834,7 @@ HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* hspi) {
  801c7d0:	4293      	cmp	r3, r2
  801c7d2:	d105      	bne.n	801c7e0 <HAL_SPI_RxCpltCallback+0x24>
 
-
-        xSemaphoreGiveFromISR(stm_test_list_array[3].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[SPI_1_2].q, NULL);
  801c7d4:	4b06      	ldr	r3, [pc, #24]	; (801c7f0 <HAL_SPI_RxCpltCallback+0x34>)
  801c7d6:	6d9b      	ldr	r3, [r3, #88]	; 0x58
  801c7d8:	2100      	movs	r1, #0
@@ -78870,7 +78851,6 @@ HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* hspi) {
  801c7f0:	200000a0 	.word	0x200000a0
 
 0801c7f4 <HAL_SPI_TxRxCpltCallback>:
-
 
 void
 HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef* hspi) {
@@ -78894,8 +78874,7 @@ HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef* hspi) {
  801c810:	2b01      	cmp	r3, #1
  801c812:	d106      	bne.n	801c822 <HAL_SPI_TxRxCpltCallback+0x2e>
 
-
-        xSemaphoreGiveFromISR(stm_test_list_array[3].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[SPI_1_2].q, NULL);
  801c814:	4b0a      	ldr	r3, [pc, #40]	; (801c840 <HAL_SPI_TxRxCpltCallback+0x4c>)
  801c816:	6d9b      	ldr	r3, [r3, #88]	; 0x58
  801c818:	2100      	movs	r1, #0
@@ -78929,14 +78908,14 @@ HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef* hspi) {
   * @param  hspi SPI handle.
   * @retval None
   */
- void HAL_SPI_AbortCpltCallback(SPI_HandleTypeDef *hspi)
-{
+void
+HAL_SPI_AbortCpltCallback(SPI_HandleTypeDef* hspi) {
  801c844:	b580      	push	{r7, lr}
  801c846:	b082      	sub	sp, #8
  801c848:	af00      	add	r7, sp, #0
  801c84a:	6078      	str	r0, [r7, #4]
-	    /* releases semaphore and report errors*/
-	    if (hspi == &hspi1 || hspi == &hspi2) {
+    /* releases semaphore and report errors*/
+    if (hspi == &hspi1 || hspi == &hspi2) {
  801c84c:	687b      	ldr	r3, [r7, #4]
  801c84e:	4a08      	ldr	r2, [pc, #32]	; (801c870 <HAL_SPI_AbortCpltCallback+0x2c>)
  801c850:	4293      	cmp	r3, r2
@@ -78946,14 +78925,13 @@ HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef* hspi) {
  801c858:	4293      	cmp	r3, r2
  801c85a:	d105      	bne.n	801c868 <HAL_SPI_AbortCpltCallback+0x24>
 
-
-	        xSemaphoreGiveFromISR(stm_test_list_array[3].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[SPI_1_2].q, NULL);
  801c85c:	4b06      	ldr	r3, [pc, #24]	; (801c878 <HAL_SPI_AbortCpltCallback+0x34>)
  801c85e:	6d9b      	ldr	r3, [r3, #88]	; 0x58
  801c860:	2100      	movs	r1, #0
  801c862:	4618      	mov	r0, r3
  801c864:	f7f2 ff2a 	bl	800f6bc <xQueueGiveFromISR>
-	    }
+    }
 }
  801c868:	bf00      	nop
  801c86a:	3708      	adds	r7, #8
@@ -78988,7 +78966,7 @@ HAL_SPI_ErrorCallback(SPI_HandleTypeDef* hspi) {
  801c890:	4293      	cmp	r3, r2
  801c892:	d10d      	bne.n	801c8b0 <HAL_SPI_ErrorCallback+0x34>
 
-        cast = stm_test_list_array[3].taskX_pack.p->payload;
+        cast = stm_test_list_array[SPI_1_2].taskX_pack.p->payload;
  801c894:	4b0a      	ldr	r3, [pc, #40]	; (801c8c0 <HAL_SPI_ErrorCallback+0x44>)
  801c896:	6e5b      	ldr	r3, [r3, #100]	; 0x64
  801c898:	685b      	ldr	r3, [r3, #4]
@@ -78997,7 +78975,7 @@ HAL_SPI_ErrorCallback(SPI_HandleTypeDef* hspi) {
  801c89c:	68fb      	ldr	r3, [r7, #12]
  801c89e:	2202      	movs	r2, #2
  801c8a0:	f883 2071 	strb.w	r2, [r3, #113]	; 0x71
-        xSemaphoreGiveFromISR(stm_test_list_array[3].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[SPI_1_2].q, NULL);
  801c8a4:	4b06      	ldr	r3, [pc, #24]	; (801c8c0 <HAL_SPI_ErrorCallback+0x44>)
  801c8a6:	6d9b      	ldr	r3, [r3, #88]	; 0x58
  801c8a8:	2100      	movs	r1, #0
@@ -79151,8 +79129,8 @@ UART_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_
  801c98a:	2b00      	cmp	r3, #0
  801c98c:	d114      	bne.n	801c9b8 <UART_1_2_task+0xf4>
 
-       /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-       HAL_UART_Abort_IT(&huart1);
+        /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
+        HAL_UART_Abort_IT(&huart1);
  801c98e:	480c      	ldr	r0, [pc, #48]	; (801c9c0 <UART_1_2_task+0xfc>)
  801c990:	f7ef faf2 	bl	800bf78 <HAL_UART_Abort_IT>
         xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
@@ -79172,12 +79150,10 @@ UART_1_2_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_
  801c9ac:	4618      	mov	r0, r3
  801c9ae:	f7f3 f801 	bl	800f9b4 <xQueueSemaphoreTake>
 
-
-            *error_report = OVER_TIME;
+        *error_report = OVER_TIME;
  801c9b2:	6a3b      	ldr	r3, [r7, #32]
  801c9b4:	2203      	movs	r2, #3
  801c9b6:	701a      	strb	r2, [r3, #0]
-
     }
 }
  801c9b8:	3718      	adds	r7, #24
@@ -79438,7 +79414,7 @@ UART_4_5_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_
     }
 
     /* waite for rx interrupt to release the semaphore, if to match time has passed report over time error  */
-       if (xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR) == pdFALSE && *error_report == NO_ERROR) {
+    if (xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR) == pdFALSE && *error_report == NO_ERROR) {
  801cb1a:	687b      	ldr	r3, [r7, #4]
  801cb1c:	681b      	ldr	r3, [r3, #0]
  801cb1e:	2164      	movs	r1, #100	; 0x64
@@ -79452,63 +79428,60 @@ UART_4_5_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_
  801cb30:	2b00      	cmp	r3, #0
  801cb32:	d115      	bne.n	801cb60 <UART_4_5_task+0x198>
 
-          /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-          HAL_UART_Abort_IT(&huart4);
+        /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
+        HAL_UART_Abort_IT(&huart4);
  801cb34:	4817      	ldr	r0, [pc, #92]	; (801cb94 <UART_4_5_task+0x1cc>)
  801cb36:	f7ef fa1f 	bl	800bf78 <HAL_UART_Abort_IT>
-           xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801cb3a:	687b      	ldr	r3, [r7, #4]
  801cb3c:	681b      	ldr	r3, [r3, #0]
  801cb3e:	2164      	movs	r1, #100	; 0x64
  801cb40:	4618      	mov	r0, r3
  801cb42:	f7f2 ff37 	bl	800f9b4 <xQueueSemaphoreTake>
 
-           HAL_UART_Abort_IT(&huart5);
+        HAL_UART_Abort_IT(&huart5);
  801cb46:	4814      	ldr	r0, [pc, #80]	; (801cb98 <UART_4_5_task+0x1d0>)
  801cb48:	f7ef fa16 	bl	800bf78 <HAL_UART_Abort_IT>
-           xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801cb4c:	687b      	ldr	r3, [r7, #4]
  801cb4e:	681b      	ldr	r3, [r3, #0]
  801cb50:	2164      	movs	r1, #100	; 0x64
  801cb52:	4618      	mov	r0, r3
  801cb54:	f7f2 ff2e 	bl	800f9b4 <xQueueSemaphoreTake>
 
-               *error_report = OVER_TIME;
+        *error_report = OVER_TIME;
  801cb58:	6a3b      	ldr	r3, [r7, #32]
  801cb5a:	2203      	movs	r2, #3
  801cb5c:	701a      	strb	r2, [r3, #0]
  801cb5e:	e015      	b.n	801cb8c <UART_4_5_task+0x1c4>
 
-       }else if (*error_report == ERROR_IT){
+    } else if (*error_report == ERROR_IT) {
  801cb60:	6a3b      	ldr	r3, [r7, #32]
  801cb62:	781b      	ldrb	r3, [r3, #0]
  801cb64:	2b02      	cmp	r3, #2
  801cb66:	d111      	bne.n	801cb8c <UART_4_5_task+0x1c4>
 
-    	   /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
-    	           HAL_UART_Abort_IT(&huart4);
+        /* abort transmission in case HAL returns error so callback isr function wont release semaphore */
+        HAL_UART_Abort_IT(&huart4);
  801cb68:	480a      	ldr	r0, [pc, #40]	; (801cb94 <UART_4_5_task+0x1cc>)
  801cb6a:	f7ef fa05 	bl	800bf78 <HAL_UART_Abort_IT>
-    	            xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801cb6e:	687b      	ldr	r3, [r7, #4]
  801cb70:	681b      	ldr	r3, [r3, #0]
  801cb72:	2164      	movs	r1, #100	; 0x64
  801cb74:	4618      	mov	r0, r3
  801cb76:	f7f2 ff1d 	bl	800f9b4 <xQueueSemaphoreTake>
 
-    	            HAL_UART_Abort_IT(&huart5);
+        HAL_UART_Abort_IT(&huart5);
  801cb7a:	4807      	ldr	r0, [pc, #28]	; (801cb98 <UART_4_5_task+0x1d0>)
  801cb7c:	f7ef f9fc 	bl	800bf78 <HAL_UART_Abort_IT>
-    	            xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
+        xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR);
  801cb80:	687b      	ldr	r3, [r7, #4]
  801cb82:	681b      	ldr	r3, [r3, #0]
  801cb84:	2164      	movs	r1, #100	; 0x64
  801cb86:	4618      	mov	r0, r3
  801cb88:	f7f2 ff14 	bl	800f9b4 <xQueueSemaphoreTake>
-
-       }
-
-
+    }
 }
  801cb8c:	3718      	adds	r7, #24
  801cb8e:	46bd      	mov	sp, r7
@@ -79526,7 +79499,6 @@ HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
  801cba0:	af00      	add	r7, sp, #0
  801cba2:	6078      	str	r0, [r7, #4]
 
-
     if (huart == &huart4 || huart == &huart5) {
  801cba4:	687b      	ldr	r3, [r7, #4]
  801cba6:	4a10      	ldr	r2, [pc, #64]	; (801cbe8 <HAL_UART_RxCpltCallback+0x4c>)
@@ -79537,17 +79509,16 @@ HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
  801cbb0:	4293      	cmp	r3, r2
  801cbb2:	d106      	bne.n	801cbc2 <HAL_UART_RxCpltCallback+0x26>
 
-
-        xSemaphoreGiveFromISR(stm_test_list_array[1].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[UART_4_5].q, NULL);
  801cbb4:	4b0e      	ldr	r3, [pc, #56]	; (801cbf0 <HAL_UART_RxCpltCallback+0x54>)
  801cbb6:	6a1b      	ldr	r3, [r3, #32]
  801cbb8:	2100      	movs	r1, #0
  801cbba:	4618      	mov	r0, r3
  801cbbc:	f7f2 fd7e 	bl	800f6bc <xQueueGiveFromISR>
+
     } else if (huart == &huart1 || huart == &huart2) {
 
-
-        xSemaphoreGiveFromISR(stm_test_list_array[0].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[UART_1_2].q, NULL);
     }
 }
  801cbc0:	e00d      	b.n	801cbde <HAL_UART_RxCpltCallback+0x42>
@@ -79560,7 +79531,7 @@ HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart) {
  801cbcc:	4a0a      	ldr	r2, [pc, #40]	; (801cbf8 <HAL_UART_RxCpltCallback+0x5c>)
  801cbce:	4293      	cmp	r3, r2
  801cbd0:	d105      	bne.n	801cbde <HAL_UART_RxCpltCallback+0x42>
-        xSemaphoreGiveFromISR(stm_test_list_array[0].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[UART_1_2].q, NULL);
  801cbd2:	4b07      	ldr	r3, [pc, #28]	; (801cbf0 <HAL_UART_RxCpltCallback+0x54>)
  801cbd4:	685b      	ldr	r3, [r3, #4]
  801cbd6:	2100      	movs	r1, #0
@@ -79599,7 +79570,7 @@ HAL_UART_ErrorCallback(UART_HandleTypeDef* huart) {
  801cc10:	4293      	cmp	r3, r2
  801cc12:	d108      	bne.n	801cc26 <HAL_UART_ErrorCallback+0x2a>
 
-        cast = stm_test_list_array[1].taskX_pack.p->payload;
+        cast = stm_test_list_array[UART_4_5].taskX_pack.p->payload;
  801cc14:	4b13      	ldr	r3, [pc, #76]	; (801cc64 <HAL_UART_ErrorCallback+0x68>)
  801cc16:	6adb      	ldr	r3, [r3, #44]	; 0x2c
  801cc18:	685b      	ldr	r3, [r3, #4]
@@ -79609,9 +79580,9 @@ HAL_UART_ErrorCallback(UART_HandleTypeDef* huart) {
  801cc1e:	2202      	movs	r2, #2
  801cc20:	f883 2071 	strb.w	r2, [r3, #113]	; 0x71
 
-        cast = stm_test_list_array[0].taskX_pack.p->payload;
+        cast = stm_test_list_array[UART_1_2].taskX_pack.p->payload;
         cast->error_report = ERROR_IT;
-        xSemaphoreGiveFromISR(stm_test_list_array[0].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[UART_1_2].q, NULL);
     }
 }
  801cc24:	e015      	b.n	801cc52 <HAL_UART_ErrorCallback+0x56>
@@ -79624,7 +79595,7 @@ HAL_UART_ErrorCallback(UART_HandleTypeDef* huart) {
  801cc30:	4a0e      	ldr	r2, [pc, #56]	; (801cc6c <HAL_UART_ErrorCallback+0x70>)
  801cc32:	4293      	cmp	r3, r2
  801cc34:	d10d      	bne.n	801cc52 <HAL_UART_ErrorCallback+0x56>
-        cast = stm_test_list_array[0].taskX_pack.p->payload;
+        cast = stm_test_list_array[UART_1_2].taskX_pack.p->payload;
  801cc36:	4b0b      	ldr	r3, [pc, #44]	; (801cc64 <HAL_UART_ErrorCallback+0x68>)
  801cc38:	691b      	ldr	r3, [r3, #16]
  801cc3a:	685b      	ldr	r3, [r3, #4]
@@ -79633,7 +79604,7 @@ HAL_UART_ErrorCallback(UART_HandleTypeDef* huart) {
  801cc3e:	68fb      	ldr	r3, [r7, #12]
  801cc40:	2202      	movs	r2, #2
  801cc42:	f883 2071 	strb.w	r2, [r3, #113]	; 0x71
-        xSemaphoreGiveFromISR(stm_test_list_array[0].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[UART_1_2].q, NULL);
  801cc46:	4b07      	ldr	r3, [pc, #28]	; (801cc64 <HAL_UART_ErrorCallback+0x68>)
  801cc48:	685b      	ldr	r3, [r3, #4]
  801cc4a:	2100      	movs	r1, #0
@@ -79652,13 +79623,14 @@ HAL_UART_ErrorCallback(UART_HandleTypeDef* huart) {
  801cc6c:	20000f6c 	.word	0x20000f6c
 
 0801cc70 <HAL_UART_AbortCpltCallback>:
-void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart)
-{
+
+void
+HAL_UART_AbortCpltCallback(UART_HandleTypeDef* huart) {
  801cc70:	b580      	push	{r7, lr}
  801cc72:	b082      	sub	sp, #8
  801cc74:	af00      	add	r7, sp, #0
  801cc76:	6078      	str	r0, [r7, #4]
-	 if (huart == &huart4 || huart == &huart5) {
+    if (huart == &huart4 || huart == &huart5) {
  801cc78:	687b      	ldr	r3, [r7, #4]
  801cc7a:	4a10      	ldr	r2, [pc, #64]	; (801ccbc <HAL_UART_AbortCpltCallback+0x4c>)
  801cc7c:	4293      	cmp	r3, r2
@@ -79668,20 +79640,20 @@ void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart)
  801cc84:	4293      	cmp	r3, r2
  801cc86:	d106      	bne.n	801cc96 <HAL_UART_AbortCpltCallback+0x26>
 
-	        xSemaphoreGiveFromISR(stm_test_list_array[1].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[UART_4_5].q, NULL);
  801cc88:	4b0e      	ldr	r3, [pc, #56]	; (801ccc4 <HAL_UART_AbortCpltCallback+0x54>)
  801cc8a:	6a1b      	ldr	r3, [r3, #32]
  801cc8c:	2100      	movs	r1, #0
  801cc8e:	4618      	mov	r0, r3
  801cc90:	f7f2 fd14 	bl	800f6bc <xQueueGiveFromISR>
-	    } else if (huart == &huart1 || huart == &huart2) {
 
-	        xSemaphoreGiveFromISR(stm_test_list_array[0].q, NULL);
-	    }
+    } else if (huart == &huart1 || huart == &huart2) {
 
+        xSemaphoreGiveFromISR(stm_test_list_array[0].q, NULL);
+    }
 }
  801cc94:	e00d      	b.n	801ccb2 <HAL_UART_AbortCpltCallback+0x42>
-	    } else if (huart == &huart1 || huart == &huart2) {
+    } else if (huart == &huart1 || huart == &huart2) {
  801cc96:	687b      	ldr	r3, [r7, #4]
  801cc98:	4a0b      	ldr	r2, [pc, #44]	; (801ccc8 <HAL_UART_AbortCpltCallback+0x58>)
  801cc9a:	4293      	cmp	r3, r2
@@ -79690,7 +79662,7 @@ void HAL_UART_AbortCpltCallback(UART_HandleTypeDef *huart)
  801cca0:	4a0a      	ldr	r2, [pc, #40]	; (801cccc <HAL_UART_AbortCpltCallback+0x5c>)
  801cca2:	4293      	cmp	r3, r2
  801cca4:	d105      	bne.n	801ccb2 <HAL_UART_AbortCpltCallback+0x42>
-	        xSemaphoreGiveFromISR(stm_test_list_array[0].q, NULL);
+        xSemaphoreGiveFromISR(stm_test_list_array[0].q, NULL);
  801cca6:	4b07      	ldr	r3, [pc, #28]	; (801ccc4 <HAL_UART_AbortCpltCallback+0x54>)
  801cca8:	685b      	ldr	r3, [r3, #4]
  801ccaa:	2100      	movs	r1, #0
@@ -79810,7 +79782,7 @@ ur_main() {
  801cd5e:	687b      	ldr	r3, [r7, #4]
  801cd60:	2b01      	cmp	r3, #1
  801cd62:	d002      	beq.n	801cd6a <ur_main+0x9a>
-        exit(TASK_CREATE_FAILD);
+        exit(TASK_CREATE_FAILED);
  801cd64:	2002      	movs	r0, #2
  801cd66:	f000 fa8f 	bl	801d288 <exit>
     }
@@ -79834,7 +79806,7 @@ ur_main() {
  801cd86:	2b01      	cmp	r3, #1
  801cd88:	d002      	beq.n	801cd90 <ur_main+0xc0>
 
-    	exit(TASK_CREATE_FAILD);
+    	exit(TASK_CREATE_FAILED);
  801cd8a:	2002      	movs	r0, #2
  801cd8c:	f000 fa7c 	bl	801d288 <exit>
     }
@@ -79868,7 +79840,7 @@ ur_main() {
  801cdbc:	687b      	ldr	r3, [r7, #4]
  801cdbe:	2b01      	cmp	r3, #1
  801cdc0:	d002      	beq.n	801cdc8 <ur_main+0xf8>
-        	exit(TASK_CREATE_FAILD);
+        	exit(TASK_CREATE_FAILED);
  801cdc2:	2002      	movs	r0, #2
  801cdc4:	f000 fa60 	bl	801d288 <exit>
     for (uint16_t i = 0; i < test_list_size; i++) {

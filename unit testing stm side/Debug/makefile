@@ -12,7 +12,6 @@ RM := rm -rf
 -include UR_code/src/subdir.mk
 -include UR_code/developer_code/tests\ src/subdir.mk
 -include UR_code/developer_code/subdir.mk
--include UR_code/subdir.mk
 -include Middlewares/Third_Party/LwIP/system/OS/subdir.mk
 -include Middlewares/Third_Party/LwIP/src/netif/ppp/subdir.mk
 -include Middlewares/Third_Party/LwIP/src/netif/subdir.mk

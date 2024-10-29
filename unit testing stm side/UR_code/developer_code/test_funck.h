@@ -52,7 +52,7 @@ typedef enum test_task_list {
     I2C_1_2,  /*!< test i2c 1 and 2 */
     SPI_1_2,  /*!< test spi 1 and 2 */
     ADC_DAC,  /*!< test adc anc dac */
-    FLASH     /*!< test flash */
+	FLASH_TEST,     /*!< test flash */
 
 } test_task_list_t;
 

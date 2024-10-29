@@ -34,6 +34,9 @@
 #ifndef DEVELOPER_CODE_UART_TEST_H_
 #define DEVELOPER_CODE_UART_TEST_H_
 
+#include "main_ur.h"
+
+
 extern UART_HandleTypeDef huart4;
 extern UART_HandleTypeDef huart5;
 extern UART_HandleTypeDef huart8;

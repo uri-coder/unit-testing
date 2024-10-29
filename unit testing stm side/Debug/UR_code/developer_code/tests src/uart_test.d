@@ -1,6 +1,6 @@
 UR_code/developer_code/tests src/uart_test.o: \
  ../UR_code/developer_code/tests\ src/uart_test.c \
- C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/extern_template_variables.h \
+ C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/uart_test.h \
  C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/main_ur.h \
  ../Core/Inc/main.h ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
  ../Core/Inc/stm32f7xx_hal_conf.h \
@@ -97,9 +97,14 @@ UR_code/developer_code/tests src/uart_test.o: \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
- C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/uart_test.h \
- C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/main_ur.h
-C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/extern_template_variables.h:
+ C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/extern_template_variables.h \
+ C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/main_ur.h \
+ C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/test_funck.h \
+ C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/dac_adc_test.h \
+ C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/flash_test.h \
+ C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/i2c_test.h \
+ C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/spi_test.h
+C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/uart_test.h:
 C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/main_ur.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -197,5 +202,10 @@ C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/main_ur
 ../Middlewares/Third_Party/LwIP/src/include/lwip/ip6.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h:
 ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h:
-C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/uart_test.h:
+C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/extern_template_variables.h:
 C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/inc/main_ur.h:
+C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/test_funck.h:
+C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/dac_adc_test.h:
+C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/flash_test.h:
+C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/i2c_test.h:
+C:/unit\ testing\ project/unit-test/unit\ testing\ stm\ side/UR_code/developer_code/tests\ inc/spi_test.h:
