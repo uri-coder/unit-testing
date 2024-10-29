@@ -259,8 +259,7 @@ typedef struct linux_app_test_setting {
 
     uint8_t test_name[test_name_SIZE]; /*!< name of test */
     uint8_t criteria;                  /*!< how to masseur the test successes */
-    uint8_t
-        pulling_or_it; /* telling pc if test is in pulling mode(run separately) or it mode(run simultaneously) for accurate timing */
+    uint8_t pulling_or_it; /*!< telling pc if test is in pulling mode(run separately) or it mode(run simultaneously) for accurate timing */
 } linux_app_test_setting_t;
 
 #pragma pack(pop)
