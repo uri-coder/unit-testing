@@ -1,7 +1,0 @@
-<map id="begin_task" name="begin_task">
-<area shape="rect" id="node1" title="task executed at program startup. initialising the server." alt="" coords="5,56,99,83"/>
-<area shape="rect" id="node2" href="$main__ur_8h.html#ad17ad77c26a466370dbc8e3bf56d0a98" title="creating sockets initialising card uniq id and task&#39;s ruining flags" alt="" coords="147,56,263,83"/>
-<area shape="rect" id="node3" href="$main__ur_8h.html#a79854c9c32cb7fddb1a7c38eaa2a993d" title=" " alt="" coords="351,5,433,32"/>
-<area shape="rect" id="node4" href="$main__ur_8h.html#aa6d6430499acae43d342f0e68ddbb209" title=" " alt="" coords="352,56,432,83"/>
-<area shape="rect" id="node5" href="$server_8c.html#a5b44c65aa41e79871a46aeed1bb4751b" title="udp receive callback. directing packages, according to port number to their destination task." alt="" coords="311,107,473,133"/>
-</map>

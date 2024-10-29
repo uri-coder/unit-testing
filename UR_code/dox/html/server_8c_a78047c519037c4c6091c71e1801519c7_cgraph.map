@@ -1,6 +1,0 @@
-<map id="udpServer_init" name="udpServer_init">
-<area shape="rect" id="node1" title="creating sockets initialising card uniq id and task&#39;s ruining flags" alt="" coords="5,56,121,83"/>
-<area shape="rect" id="node2" href="$main__ur_8h.html#a79854c9c32cb7fddb1a7c38eaa2a993d" title=" " alt="" coords="210,5,291,32"/>
-<area shape="rect" id="node3" href="$main__ur_8h.html#aa6d6430499acae43d342f0e68ddbb209" title=" " alt="" coords="211,56,291,83"/>
-<area shape="rect" id="node4" href="$server_8c.html#a5b44c65aa41e79871a46aeed1bb4751b" title="udp receive callback. directing packages, according to port number to their destination task." alt="" coords="169,107,332,133"/>
-</map>

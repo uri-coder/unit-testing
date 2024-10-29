@@ -57,8 +57,6 @@ flash_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_sem
 
         case 0: /* flash test */
 
-
-
             /* erase flash */
             erase_init.TypeErase = FLASH_TYPEERASE_SECTORS;
             erase_init.Sector = FLASH_SECTOR_6;
@@ -80,14 +78,13 @@ flash_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_sem
             if (xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR) == pdFALSE && *error_report == NO_ERROR) {
 
                 *error_report = OVER_TIME;
-
             }
 
             /* write to flash */
             for (uint8_t j = 0; j < sizeof_data / sizeof(uint32_t); j++) {
 
                 status = HAL_FLASH_Program_IT(FLASH_TYPEPROGRAM_WORD, FLASH_ADDR + j * sizeof(uint32_t),
-                                           *(uint32_t*)(data + j * sizeof(uint32_t)));
+                                              *(uint32_t*)(data + j * sizeof(uint32_t)));
                 if (status != HAL_OK) {
                     *error_report = HAL_RETURN_ERROR;
                     HAL_FLASH_Lock();
@@ -98,7 +95,6 @@ flash_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_sem
                 if (xSemaphoreTake(*interrupt_sem, TIME_ELAPSED_ERROR) == pdFALSE && *error_report == NO_ERROR) {
 
                     *error_report = OVER_TIME;
-
                 }
             }
 
@@ -115,7 +111,6 @@ flash_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_sem
     HAL_FLASH_Lock();
 }
 
-
 /**
   * @brief  FLASH end of operation interrupt callback
   * @param  ReturnValue The value saved in this parameter depends on the ongoing procedure
@@ -125,12 +120,10 @@ flash_task(uint8_t* data, uint16_t sizeof_data, SemaphoreHandle_t* interrupt_sem
   *                 - Mass Erase   : No return value expected
   * @retval None
   */
-void HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue)
-{
+void
+HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue) {
 
     xSemaphoreGiveFromISR(stm_test_list_array[FLASH_TEST].q, NULL);
-
-
 }
 
 /**
@@ -142,17 +135,14 @@ void HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue)
   *                 - Mass Erase   : No return value expected
   * @retval None
   */
-void HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue)
-{
-
+void
+HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue) {
 
     unit_tasting_package_t* cast;
 
-        cast = stm_test_list_array[FLASH_TEST].taskX_pack.p->payload;
+    cast = stm_test_list_array[FLASH_TEST].taskX_pack.p->payload;
 
-        cast->error_report = ERROR_IT;
+    cast->error_report = ERROR_IT;
 
-        xSemaphoreGiveFromISR(stm_test_list_array[FLASH_TEST].q, NULL);
-
-
+    xSemaphoreGiveFromISR(stm_test_list_array[FLASH_TEST].q, NULL);
 }

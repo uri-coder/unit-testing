@@ -75,7 +75,7 @@ ur_main() {
         stm_test_list_array[i].q = xSemaphoreCreateBinary();
 
         if (stm_test_list_array[i].q == NULL) {
-             exit(SEMAPHORE_CREATE_FAILED);
+            exit(SEMAPHORE_CREATE_FAILED);
         }
     }
 
@@ -101,7 +101,7 @@ ur_main() {
 
     if (err != pdPASS) {
 
-    	exit(TASK_CREATE_FAILED);
+        exit(TASK_CREATE_FAILED);
     }
 
     /* crate a task's from function "testing_thread". each task, except a member from "stm_test_list_array" */
@@ -110,7 +110,7 @@ ur_main() {
         err = xTaskCreate((TaskFunction_t)testing_thread, "test_task", TESTIN_THREAD_STACK_SIZE,
                           &stm_test_list_array[i], UNIT_TEST_TASK_PRIORITY, NULL);
         if (err != pdPASS) {
-        	exit(TASK_CREATE_FAILED);
+            exit(TASK_CREATE_FAILED);
         }
     }
 

@@ -78,7 +78,7 @@ app_data_init_task(void* arg) {
 
             if (check != ERR_OK) {
 
-            	exit(UDP_SEND_FAILED);
+                exit(UDP_SEND_FAILED);
             }
 
             continue;
@@ -101,7 +101,7 @@ app_data_init_task(void* arg) {
 
                 if (check != ERR_OK) {
 
-                	exit(UDP_SEND_FAILED);
+                    exit(UDP_SEND_FAILED);
                 }
                 break;
 
@@ -114,7 +114,7 @@ app_data_init_task(void* arg) {
 
                 if (check != ERR_OK) {
 
-                	exit(UDP_SEND_FAILED);
+                    exit(UDP_SEND_FAILED);
                 }
                 break;
         }
